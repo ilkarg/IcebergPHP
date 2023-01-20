@@ -183,6 +183,9 @@ class Router {
             ExceptionHandler::generateError("<h3>Маршрут /$uri не поддерживает тип запроса $method</h3>");
         }
 
+        if ($uri != $this->route_array[$uri][$method]->uri) {
+            header('Location: ' . $this->route_array[$uri][$method]->uri);
+        }
         call_user_func($this->route_array[$uri][$method]->action);
     }
 }

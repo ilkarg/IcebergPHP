@@ -28,7 +28,9 @@ class MainController {
     }
 
     public static function index() {
-        global $template, $orm, $request;
+        global $template;
+        echo View::createFromTemplate($template);
+        /*global $template, $orm, $request;
         $user_model = new User('Ilya', 20);
         $orm->connect();
         $user = R::dispense('user');
@@ -42,7 +44,7 @@ class MainController {
         }
         //echo View::createFromTemplate($template);
         echo $template->generatePage(__DIR__ . '/../pages/test.html');
-        //$data = $request->post("localhost:8001/plus", '{"num1": 2, "num2": 2}');
+        //$data = $request->post("localhost:8001/plus", '{"num1": 2, "num2": 2}');*/
         /*if (!$data) {
             echo "false";
         } else {
