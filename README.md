@@ -56,3 +56,6 @@ Linux:
 **Описание:** Создает модель User в директории models. Если директория models отсутствует, то создает ее
 
 Репозиторий helper - https://github.com/mrProger/Helper
+
+## Участие в разработке
+Здесь вы можете предложить свою идею для будущего обновления - [Предложить](https://github.com/mrProger/IcebergPHP/issues/1)
