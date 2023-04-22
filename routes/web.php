@@ -1,6 +1,6 @@
 <?php
 
-$router->post("plus", "MainController:plus");
+$router->post("plus", "MainController::plus");
 
 $router->get("test", "MainController::test");
 
