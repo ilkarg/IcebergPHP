@@ -1,7 +1,5 @@
 <?php
 
-include __DIR__ . '/../app/PHPModel/Model.php';
-
 class User extends Model {
     public string $name;
     public $age;
