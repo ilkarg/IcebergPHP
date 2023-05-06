@@ -59,3 +59,7 @@ Linux:
 
 ## Участие в разработке
 Здесь вы можете предложить свою идею для будущего обновления - [Предложить](https://github.com/mrProger/IcebergPHP/issues/1)
+
+# Проекты разработанные на IcebergPHP
+1. [Новостной портал Senstation](https://github.com/mrProger/NewsSite) (Дипломный проект)
+2. [Сайт автосалона Mercedes](https://github.com/mrProger/CarsShop) (Дипломный проект)
