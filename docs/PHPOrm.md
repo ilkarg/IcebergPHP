@@ -138,7 +138,7 @@ $orm->connect();
 ## PostgreSQL
 **1. Создание объекта базы данных**
 ```php
-$orm = new MySQL("localhost", "root", "", "db", 3306);
+$orm = new PostgreSQL("localhost", "root", "", "db", 3306);
 ```
 
 **Описание:** Конструктор объекта класса \PHPOrm\PostgreSQL
