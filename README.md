@@ -63,3 +63,4 @@ Linux:
 # Проекты разработанные на IcebergPHP
 1. [Новостной портал Senstation](https://github.com/mrProger/NewsSite) (Дипломный проект)
 2. [Сайт автосалона Mercedes](https://github.com/mrProger/CarsShop) (Дипломный проект)
+3. [Сайт Строительно-монтажного управления Смурфик](https://github.com/mrProger/Smurfik2.0) (Дипломный проект)
