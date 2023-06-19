@@ -1,9 +1,9 @@
 <?php
 
-$router->post("plus", "MainController::plus");
+use Pecee\SimpleRouter\SimpleRouter as Route;
+use controllers\MainController;
 
-$router->get("test", "MainController::test");
-
-$router->get("test123", function() { MainController::test123(); });
-
-$router->get("/", function() { MainController::index(); });
+Route::post("/plus", [MainController::class, "plus"]);
+Route::get("/test", [MainController::class, "test"]);
+Route::get("/test123", [MainController::class, "test123"]);
+Route::get("/", [MainController::class, "index"]);

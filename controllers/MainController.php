@@ -1,18 +1,19 @@
 <?php
 
+namespace controllers;
+
 // Подключение моделей
 include __DIR__ . '/../models/User.php';
 
 use PHPView\View;
 use PHPExceptionHandler\ExceptionHandler;
+use PHPTemplater\Template;
 
 class MainController {
-    public static function plus() {
-        global $router;
-
-        $data = $router->getPostRouteData();
-        if ($data != null) {
-            echo $data["num1"] + $data["num2"];
+    public function plus() {
+        $_POST = \PHPSystem\System::getPostRouteData();
+        if (isset($_POST->num1, $_POST->num2)) {
+            echo $_POST->num1 + $_POST->num2;
         } else {
             echo "Данные не дошли или неверные имена полей";
         }
@@ -28,7 +29,7 @@ class MainController {
     }
 
     public static function index() {
-        global $template;
+        $template = new Template(__DIR__ . "/../pages/test.html");
         echo View::createFromTemplate($template);
         /*global $template, $orm, $request;
         $user_model = new User('Ilya', 20);

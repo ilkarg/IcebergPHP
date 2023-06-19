@@ -3,8 +3,11 @@
 
 <script>
     function send() {
-        fetch('plus', {
+        fetch('/plus', {
             method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
                 "num1": 2,
                 "num2": 2
@@ -14,7 +17,5 @@
                 alert(text);
             });
         });
-
-        document.location = 'test';
     }
 </script>

@@ -11,7 +11,7 @@ class System {
         }
     }
     
-    public static function addCors() {
+    public static function configCors() {
         if (isset($_SERVER['HTTP_ORIGIN'])) {
             header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
             header('Access-Control-Allow-Credentials: true');
@@ -58,5 +58,9 @@ class System {
     public static function isJson($string) {
         json_decode($string);
         return (json_last_error() == JSON_ERROR_NONE);
+    }
+
+    public static function getPostRouteData() {
+        return json_decode(file_get_contents('php://input'));
     }
 }
