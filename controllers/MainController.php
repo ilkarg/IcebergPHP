@@ -1,7 +1,5 @@
 <?php
 
-namespace controllers;
-
 // Подключение моделей
 include __DIR__ . '/../models/User.php';
 

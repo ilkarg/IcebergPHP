@@ -1,7 +1,7 @@
 <?php
 
 use Pecee\SimpleRouter\SimpleRouter as Route;
-use controllers\MainController;
+use MainController;
 
 Route::post("/plus", [MainController::class, "plus"]);
 Route::get("/test", [MainController::class, "test"]);
