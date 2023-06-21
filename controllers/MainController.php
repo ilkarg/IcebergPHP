@@ -6,10 +6,11 @@ include __DIR__ . '/../models/User.php';
 use PHPView\View;
 use PHPExceptionHandler\ExceptionHandler;
 use PHPTemplater\Template;
+use PHPSystem\System;
 
 class MainController {
     public function plus() {
-        $_POST = \PHPSystem\System::getPostRouteData();
+        $_POST = System::getRequestData();
         if (isset($_POST->num1, $_POST->num2)) {
             echo $_POST->num1 + $_POST->num2;
         } else {
@@ -17,16 +18,16 @@ class MainController {
         }
     }
 
-    public static function test() {
+    public function test() {
         echo "<h3>test</h3>";
     }
 
-    public static function test123() {
+    public function test123() {
         global $template;
         echo View::createFromTemplate($template);
     }
 
-    public static function index() {
+    public function index() {
         $template = new Template(__DIR__ . "/../pages/test.html");
         echo View::createFromTemplate($template);
         /*global $template, $orm, $request;

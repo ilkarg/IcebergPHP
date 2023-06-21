@@ -15,7 +15,7 @@ class System {
         if (isset($_SERVER['HTTP_ORIGIN'])) {
             header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
             header('Access-Control-Allow-Credentials: true');
-            header('Access-Control-Max-Age: 86400');    // cache for 1 day
+            header('Access-Control-Max-Age: 86400');
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
@@ -60,7 +60,7 @@ class System {
         return (json_last_error() == JSON_ERROR_NONE);
     }
 
-    public static function getPostRouteData() {
+    public static function getRequestData() {
         return json_decode(file_get_contents('php://input'));
     }
 }
