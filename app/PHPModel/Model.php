@@ -4,6 +4,8 @@ use \PHPExceptionHandler\ExceptionHandler;
 use \PHPSystem\System;
 
 class Model {
+    public $table;
+
     public function getAttributeLabel(string $attribute) {
         return get_object_vars($this)[$attribute];
     }

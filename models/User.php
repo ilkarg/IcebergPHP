@@ -1,6 +1,8 @@
 <?php
 
 class User extends Model {
+    public $table = "users";
+
     public string $name;
     public $age;
 
