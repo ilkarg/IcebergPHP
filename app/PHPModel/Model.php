@@ -4,7 +4,17 @@ use \PHPExceptionHandler\ExceptionHandler;
 use \PHPSystem\System;
 
 class Model {
-    public $table;
+    public static $table;
+
+    public static function insert(string $table, array $data) {
+        global $orm;
+        $orm->connect();
+        $model = R::dispense($table);
+        foreach (array_keys($data) as $key) {
+            $model[$key] = $data[$key];
+        }
+        R::store($model);
+    }
 
     public function getAttributeLabel(string $attribute) {
         return get_object_vars($this)[$attribute];

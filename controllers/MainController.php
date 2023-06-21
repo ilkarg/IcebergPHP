@@ -1,7 +1,7 @@
 <?php
 
 // Подключение моделей
-include __DIR__ . '/../models/User.php';
+// require __DIR__ . '/../models/User.php';
 
 use PHPView\View;
 use PHPExceptionHandler\ExceptionHandler;

@@ -7,6 +7,7 @@ include __DIR__ . '/app/PHPTemplater/Template.php';
 include __DIR__ . '/app/PHPView/View.php';
 include __DIR__ . '/app/PHPRequester/Request.php';
 include __DIR__ . '/app/PHPModel/Model.php';
+include __DIR__ . '/app/PHPHash/Hash.php';
 
 // Подключение системных пространств имен
 use PHPTemplater\Template;
