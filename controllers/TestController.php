@@ -8,7 +8,7 @@ use Models\Test;
 
 class TestController {
 	public function testPost() {
-		$data = System::getQueryData();
+		$data = System::getRequestData();
 		echo json_encode([
 			"response" => $data
 		]);
@@ -26,7 +26,7 @@ class TestController {
 	}
 
 	public function testPut($id) {
-		$data = System::getPostRouteData();
+		$data = System::getRequestData();
 		echo json_encode([
 			"response" => [
 				"data" => $data,
