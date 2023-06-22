@@ -55,7 +55,7 @@ function runCommand() {
             if (!file_exists("models")) {
                 mkdir("models");
             }
-            file_put_contents("models/".$argv[2].".php", "<?php\n\nclass ".$argv[2]." extends Model {\n\t\n}");
+            file_put_contents("models/".$argv[2].".php", "<?php\n\nnamespace Models;\n\nuse \\Illuminate\\Database\\Eloquent\\Model;\n\nclass ".$argv[2]." extends Model {\n\t\n}");
             break;
         case "start":
             if (isset($argv[2])) {
