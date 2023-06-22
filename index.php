@@ -27,6 +27,4 @@ include __DIR__ . '/controllers/TestController.php';
 // Подключение файла с маршрутами
 include __DIR__ . '/routes/web.php';
 
-SimpleRouter::setDefaultNamespace('controllers');
-
 SimpleRouter::start();

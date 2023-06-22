@@ -1,10 +1,37 @@
 <?php
 
+include __DIR__ . "/app/PHPSystem/System.php";
+
+use PHPSystem\System;
+
 $commandList = ["create-controller", "create-model", "start"];
 
 function printCommandList() {
     global $commandList;
     echo implode("\n", $commandList);
+}
+
+function getIndexForIncludeController(array $data, string $str) {
+    $index = -1;
+    for ($i = 0; $i < count($data); $i++) {
+        if (System::endsWith(trim($data[$i]), $str)) {
+            $index = $i;
+        }
+    }
+    return $index;
+}
+
+function addController(string $controllerName) {
+    $data = file("index.php");
+    $index = getIndexForIncludeController($data, "Controller.php';");
+    if ($index != -1) {
+        $res = array_merge(array_slice($data, 0, $index + 1), ["include __DIR__ . '/controllers/$controllerName.php';\n"], array_slice($data, $index + 1, count($data)));
+    } else {
+        $index = getIndexForIncludeController($data, "bootstrap.php';");
+        $res = array_merge(array_slice($data, 0, $index + 1), ["include __DIR__ . '/controllers/$controllerName.php';\n"], array_slice($data, $index + 1, count($data)));
+    }
+
+    file_put_contents("index.php", implode($res));
 }
 
 function runCommand() {
@@ -19,6 +46,7 @@ function runCommand() {
                 mkdir("controllers");
             }
             file_put_contents("controllers/".$argv[2].".php", "<?php\n\nclass ".$argv[2]." {\n\t\n}");
+            addController($argv[2]);
             break;
         case "create-model":
             if (!isset($argv[2])) {
