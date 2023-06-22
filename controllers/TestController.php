@@ -1,9 +1,10 @@
 <?php
 
-require __DIR__ . "/../models/User.php";
+require __DIR__ . "/../models/Test.php";
 
 use PHPSystem\System;
 use PHPHash\Hash;
+use Models\Test;
 
 class TestController {
 	public function testPost() {
@@ -14,9 +15,13 @@ class TestController {
 	}
 
 	public function testGet($data) {
-		User::insert(User::$table, ["login" => "mrProger", "password" => Hash::sha256("Ilya123", "", 1)]);
+		$test = Test::create([
+			"login" => "mrYatov2016", 
+			"password" => "Ilya2012"
+		]);
 		echo json_encode([
-			"response" => $data
+			"response" => $data,
+			"test" => $test
 		]);
 	}
 

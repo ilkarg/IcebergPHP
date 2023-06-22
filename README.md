@@ -17,9 +17,7 @@ IcebergPHP - это современный фреймворк для веб-пр
 3) Запустить файл ```start.bat``` или ```start.sh```, зависимо от системы
 4) Наслаждаться результатом
 ## Документация
-- [PHPRouter](docs/PHPRouter.md)
 - [PHPExceptionHandler](docs/PHPExceptionHandler.md)
-- [PHPOrm](docs/PHPOrm.md)
 - [PHPSystem](docs/PHPSystem.md)
 - [PHPTemplater](docs/PHPTemplater.md)
 - [PHPView](docs/PHPView.md)

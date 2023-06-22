@@ -2,7 +2,6 @@
 
 // Подключение системных библиотек
 include __DIR__ . '/vendor/autoload.php';
-include __DIR__ . '/app/PHPOrm/MySQL.php';
 include __DIR__ . '/app/PHPTemplater/Template.php';
 include __DIR__ . '/app/PHPView/View.php';
 include __DIR__ . '/app/PHPRequester/Request.php';
