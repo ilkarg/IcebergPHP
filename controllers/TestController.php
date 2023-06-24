@@ -15,10 +15,10 @@ class TestController {
 	}
 
 	public function testGet($data) {
-		$test = Test::create([
+		/*$test = Test::create([
 			"login" => "mrYatov2016", 
 			"password" => "Ilya2012"
-		]);
+		]);*/
 		echo json_encode([
 			"response" => $data,
 			"test" => $test
