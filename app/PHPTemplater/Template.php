@@ -12,43 +12,43 @@ class Template {
     protected string $template;
 
     public function __construct($template) {
-        if (System::endsWith($template, ".html")) {
+        if (System::ends_with($template, ".html")) {
             $template = file_get_contents($template);
         }
 
-        if (System::isNull($template)) {
-            ExceptionHandler::generateError("Не удалось установить шаблон страницы");
+        if (System::is_null($template)) {
+            ExceptionHandler::generate_error("Не удалось установить шаблон страницы");
         }
 
         $this->template = $template;
     }
 
-    public function getTemplate() {
+    public function get_template() {
         return $this->template;
     }
 
-    public function setTemplate($template) {
-        if (System::endsWith($template, ".html")) {
+    public function set_template($template) {
+        if (System::ends_with($template, ".html")) {
             $template = file_get_contents($template);
         }
 
-        if (System::isNull($template)) {
-            ExceptionHandler::generateError("Не удалось установить шаблон страницы");
+        if (System::is_null($template)) {
+            ExceptionHandler::generate_error("Не удалось установить шаблон страницы");
         }
 
         $this->template = $template;
     }
 
-    public function generatePage($content) {
+    public function generate_page($content) {
         if ($content == '') {
             $content = ' ';
         }
         
-        if (System::isNull($content)) {
-            ExceptionHandler::generateError("Не удалось сгенерировать страницу");
+        if (System::is_null($content)) {
+            ExceptionHandler::generate_error("Не удалось сгенерировать страницу");
         }
 
-        if (System::endsWith($content, ".html")) {
+        if (System::ends_with($content, ".html")) {
             $content = file_get_contents($content);
         }
 

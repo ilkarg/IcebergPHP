@@ -2,7 +2,7 @@
 
 **1. Генерация ошибки**
 ```php
-ExceptionHandler::generateError("ошибка");
+ExceptionHandler::generate_error("ошибка");
 ```
 
 **Описание:** Очень часто, необходимо во время работы сгенерировать ошибку и остановить работу сайта, для этого и нужна данная функция
@@ -15,7 +15,7 @@ ExceptionHandler::generateError("ошибка");
 
 **2. Использование своей страницы для вывода ошибок**d
 ```php
-ExceptionHandler::setCustomErrorPage($html);
+ExceptionHandler::set_custom_error_page($html);
 ```
 
 **Описание:** В данном примере мы устанавливаем свою страницу для вывода ошибок

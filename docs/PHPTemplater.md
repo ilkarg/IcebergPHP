@@ -13,7 +13,7 @@ $template = new Template(__DIR__ . "/page/test.html");
 
 **2. Получение шаблона**
 ```php
-$template->getTemplate();
+$template->get_template();
 ```
 
 **Описание:** Возвращает html верстку шаблона
@@ -24,7 +24,7 @@ $template->getTemplate();
 
 **3. Изменить шаблон**
 ```php
-$template-setTemplate(__DIR__ . "/page/test.html");
+$template-set_template(__DIR__ . "/page/test.html");
 ```
 
 **Описание:** Изменяет текущий шаблон на указанный
@@ -35,7 +35,7 @@ $template-setTemplate(__DIR__ . "/page/test.html");
 
 **4. Генерация страницы**
 ```php
-$template->generatePage(__DIR__ . "/page/test.html");
+$template->generate_page(__DIR__ . "/page/test.html");
 ```
 
 **Описание:** Генерирует страницу из текущего шаблона и указанного контента

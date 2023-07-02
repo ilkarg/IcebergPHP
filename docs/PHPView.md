@@ -15,7 +15,7 @@ View::create($template, __DIR__ . "/page/test.html");
 
 **2. Создание страницы (view) на основе шаблона (Template)**
 ```php
-View::createFromTemplate($template);
+View::create_from_template($template);
 ```
 
 **Описание:** Создает страницу на основе ранее созданного шаблона
@@ -26,7 +26,7 @@ View::createFromTemplate($template);
 
 **3. Создание страницы (view) на основе контента**
 ```php
-View::createFromContent(__DIR__ . "/page/test.html");
+View::create_from_content(__DIR__ . "/page/test.html");
 ```
 
 **Описание:** Создает страницу на основе контента

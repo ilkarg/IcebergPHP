@@ -7,14 +7,14 @@ use PHPHash\Hash;
 use Models\Test;
 
 class TestController {
-	public function testPost() {
-		$data = System::getRequestData();
+	public function test_post() {
+		$data = System::get_request_data();
 		echo json_encode([
 			"response" => $data
 		]);
 	}
 
-	public function testGet($data) {
+	public function test_get($data) {
 		/*$test = Test::create([
 			"login" => "mrYatov2016", 
 			"password" => "Ilya2012"
@@ -25,8 +25,8 @@ class TestController {
 		]);
 	}
 
-	public function testPut($id) {
-		$data = System::getRequestData();
+	public function test_put($id) {
+		$data = System::get_request_data();
 		echo json_encode([
 			"response" => [
 				"data" => $data,
@@ -35,7 +35,7 @@ class TestController {
 		]);
 	}
 
-	public function testDelete($data) {
+	public function test_delete($data) {
 		echo json_encode([
 			"response" => $data
 		]);

@@ -10,9 +10,9 @@ use PHPSystem\System;
 
 class MainController {
     public function plus() {
-        $_POST = System::getRequestData();
-        if (isset($_POST->num1, $_POST->num2)) {
-            echo $_POST->num1 + $_POST->num2;
+        $data = System::get_request_data();
+        if (isset($data['api']->num1, $data['api']->num2)) {
+            echo $data['api']->num1 + $data['api']->num2;
         } else {
             echo "Данные не дошли или неверные имена полей";
         }
@@ -24,31 +24,11 @@ class MainController {
 
     public function test123() {
         global $template;
-        echo View::createFromTemplate($template);
+        echo View::create_from_template($template);
     }
 
     public function index() {
         $template = new Template(__DIR__ . "/../pages/test.html");
-        echo View::createFromTemplate($template);
-        /*global $template, $orm, $request;
-        $user_model = new User('Ilya', 20);
-        $orm->connect();
-        $user = R::dispense('user');
-        $result = $user_model->validate();
-        if ($result["status"]) {
-            $user->name = $user_model->name;
-            $user->age = $user_model->getAge();
-            R::store($user);
-        } else {
-            ExceptionHandler::generateError($result["message"]);
-        }
-        //echo View::createFromTemplate($template);
-        echo $template->generatePage(__DIR__ . '/../pages/test.html');
-        //$data = $request->post("localhost:8001/plus", '{"num1": 2, "num2": 2}');*/
-        /*if (!$data) {
-            echo "false";
-        } else {
-            echo $data;
-        }*/
+        echo View::create_from_template($template);
     }
 }

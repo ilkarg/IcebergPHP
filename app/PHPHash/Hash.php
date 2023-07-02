@@ -11,13 +11,13 @@ class Hash {
             return;
         }
 
-        if (System::isNull($value)) {
-            ExceptionHandler::generateError("Невозможно сгенерировать хеш из пустого значения");
+        if (System::is_null($value)) {
+            ExceptionHandler::generate_error("Невозможно сгенерировать хеш из пустого значения");
         }
 
         $hash = $value;
 
-        if (!System::isNull($salt)) {
+        if (!System::is_null($salt)) {
             $hash .= $salt;
         }
 
@@ -33,13 +33,13 @@ class Hash {
             return;
         }
 
-        if (System::isNull($value)) {
-            ExceptionHandler::generateError("Невозможно сгенерировать хеш из пустого значения");
+        if (System::is_null($value)) {
+            ExceptionHandler::generate_error("Невозможно сгенерировать хеш из пустого значения");
         }
 
         $hash = $value;
 
-        if (!System::isNull($salt)) {
+        if (!System::is_null($salt)) {
             $hash .= $salt;
         }
 

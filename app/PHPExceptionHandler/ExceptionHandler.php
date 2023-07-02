@@ -10,7 +10,7 @@ class ExceptionHandler {
     /**
      * @throws \Exception
      */
-    public static function generateError(string $error_message) {
+    public static function generate_error(string $error_message) {
         if (self::$html_error_page == "none") {
             echo "<h3 class='php-exception-handler-error'>Ошибка: $error_message</h3>";
         } else {
@@ -21,7 +21,7 @@ class ExceptionHandler {
         throw new Exception("$error_message");
     }
 
-    public static function setCustomErrorPage(string $html) {
+    public static function set_custom_error_page(string $html) {
         self::$html_error_page = $html;
     }
 }

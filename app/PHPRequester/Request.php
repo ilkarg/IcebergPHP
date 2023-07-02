@@ -7,8 +7,8 @@ use PHPSystem\System;
 
 class Request {
     public function get(string $link) {
-        if (System::isNull($link)) {
-            ExceptionHandler::generateError("Все поля должны быть заполнены");
+        if (System::is_null($link)) {
+            ExceptionHandler::generate_error("Все поля должны быть заполнены");
         }
 
         $response = file_get_contents($link);
@@ -17,13 +17,13 @@ class Request {
     }
 
     public function post(string $link, $data) {
-        if (System::isNull($link) || System::isNull($data)) {
-            ExceptionHandler::generateError("Все поля должны быть заполнены");
+        if (System::is_null($link) || System::is_null($data)) {
+            ExceptionHandler::generate_error("Все поля должны быть заполнены");
         }
 
         if (!is_array($data)) {
-            if (!System::isJson($data)) {
-                ExceptionHandler::generateError("Передан неверный формат данных");
+            if (!System::is_json($data)) {
+                ExceptionHandler::generate_error("Передан неверный формат данных");
             }
         }
 
@@ -48,7 +48,7 @@ class Request {
         if($errno = curl_errno($curl)) {
             $error_message = curl_strerror($errno);
             curl_close($curl);
-            ExceptionHandler::generateError("cURL error ({$errno}):\n {$error_message}");
+            ExceptionHandler::generate_error("cURL error ({$errno}):\n {$error_message}");
         }
 
         curl_close($curl);
