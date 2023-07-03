@@ -6,10 +6,10 @@ include __DIR__ . '/app/PHPTemplater/Template.php';
 include __DIR__ . '/app/PHPView/View.php';
 include __DIR__ . '/app/PHPHash/Hash.php';
 include __DIR__ . '/app/PHPResponse/Response.php';
+include __DIR__ . '/app/PHPSession/Session.php';
 
 // Подключение системных пространств имен
 use PHPTemplater\Template;
-use PHPRequester\Request;
 use Pecee\SimpleRouter\SimpleRouter;
 
 // Подключение файла для подключения к БД
