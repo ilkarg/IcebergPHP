@@ -15,6 +15,11 @@ class Session {
     }
   }
 
+  public static function value_exists($key) {
+    session_start();
+    return isset($_SESSION[$key]);
+  }
+
   public static function get_value($key) {
     session_start();
     return $_SESSION[$key];

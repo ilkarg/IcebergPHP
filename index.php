@@ -7,9 +7,9 @@ include __DIR__ . '/app/PHPView/View.php';
 include __DIR__ . '/app/PHPHash/Hash.php';
 include __DIR__ . '/app/PHPResponse/Response.php';
 include __DIR__ . '/app/PHPSession/Session.php';
+include __DIR__ . '/app/PHPToken/Token.php';
 
 // Подключение системных пространств имен
-use PHPTemplater\Template;
 use Pecee\SimpleRouter\SimpleRouter;
 
 // Подключение файла для подключения к БД

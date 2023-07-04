@@ -3,14 +3,13 @@
 
 <script>
     function send() {
-        fetch('/plus', {
+        fetch('/test_post', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "num1": 2,
-                "num2": 2
+                "token": "688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6"
             })
         }).then((response) => {
             return response.text().then(function (text) {

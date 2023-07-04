@@ -9,15 +9,6 @@ use PHPTemplater\Template;
 use PHPSystem\System;
 
 class MainController {
-    public function plus() {
-        $data = System::get_request_data();
-        if (isset($data['api']->num1, $data['api']->num2)) {
-            echo $data['api']->num1 + $data['api']->num2;
-        } else {
-            echo "Данные не дошли или неверные имена полей";
-        }
-    }
-
     public function test() {
         echo "<h3>test</h3>";
     }

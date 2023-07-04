@@ -6,6 +6,7 @@ use PHPSystem\System;
 use PHPHash\Hash;
 use PHPSession\Session;
 use PHPResponse\Response;
+use PHPToken\Token;
 
 use Models\Test;
 
@@ -13,7 +14,8 @@ class TestController {
 	public function test_post() {
 		$data = System::get_request_data();
 		return Response::json([
-			"response" => $data
+			"response" => $data,
+			"token_valid" => Token::valid($data["api"]->token)
 		]);
 	}
 
@@ -22,8 +24,12 @@ class TestController {
 			"login" => "mrYatov2016", 
 			"password" => "Ilya2012"
 		]);*/
+
+		Session::set_value("user", ["token" => Token::generate("asd")]);
+
 		return Response::json([
-			"response" => $data
+			"response" => $data,
+			"token" => Session::get_value("user")
 		], 200);
 	}
 
