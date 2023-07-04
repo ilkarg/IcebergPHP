@@ -14,9 +14,13 @@ class Token {
 	}
 
 	public static function valid($token) {
+		if (!Session::value_exists("user")) {
+			return "false";
+		}
+
 		$user_token = is_array(Session::get_value("user")) ? Session::get_value("user")["token"] : Session::get_value("user")->token;
 
-		if (!Session::value_exists("user") || $user_token == null || $user_token != $token) {
+		if ($user_token == null || $user_token != $token) {
 			return false;
 		}
 

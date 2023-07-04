@@ -7,6 +7,7 @@ use PHPHash\Hash;
 use PHPSession\Session;
 use PHPResponse\Response;
 use PHPToken\Token;
+use PHPAuth\Auth;
 
 use Models\Test;
 
@@ -20,11 +21,6 @@ class TestController {
 	}
 
 	public function test_get($data) {
-		/*$test = Test::create([
-			"login" => "mrYatov2016", 
-			"password" => "Ilya2012"
-		]);*/
-
 		Session::set_value("user", ["token" => Token::generate("asd")]);
 
 		return Response::json([
@@ -69,6 +65,53 @@ class TestController {
 		return Response::json([
 			"response" => "OK",
 			"data" => Session::get_all_values()
+		]);
+	}
+
+	public function login() {
+		return Response::json([
+			"response" => Auth::login([
+				"login" => "mrYatov1", 
+				"password" => Hash::sha256("test1", "", 1)
+			])
+		]);
+	}
+
+	public function registration() {
+		$test = Test::create([
+			"login" => "mrYatov1", 
+			"password" => Hash::sha256("test1", "", 1)
+		]);
+
+		return Response::json([
+			"response" => Auth::login([
+				"login" => $test->login,
+				"password" => $test->password
+			])
+		]);
+	}
+
+	public function logout() {
+		return Response::json([
+			"response" => Auth::logout()
+		]);
+	}
+
+	public function get_user() {
+		return Response::json([
+			"response" => Auth::user()
+		]);
+	}
+
+	public function test_authorized() {
+		$data = System::get_request_data();
+		if (!Auth::authorized($data["api"]->token)) {
+			return Response::json([
+				"response" => "Not authorized"
+			]);
+		}
+		return Response::json([
+			"response" => "Authorized"
 		]);
 	}
 }

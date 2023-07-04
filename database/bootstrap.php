@@ -18,6 +18,7 @@ class Orm {
             "driver" => "sqlite",
             "database" => __DIR__ . "/../db.db"
         ]);*/
+
         $capsule->bootEloquent();
     }
 }
