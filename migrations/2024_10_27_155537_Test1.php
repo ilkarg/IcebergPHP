@@ -6,7 +6,11 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Test1 {
 	public function up() {
-        echo "Up Test1\n";
+        Capsule::schema()->create('tests', function($table) {
+            $table->increments('id');
+            $table->string('email')->unique();
+            $table->timestamps();
+        });
 	}
 
 	public function down() {

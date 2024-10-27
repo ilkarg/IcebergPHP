@@ -1,5 +1,6 @@
 <?php
 
+include __DIR__ . '/vendor/autoload.php';
 include __DIR__ . "/app/PHPSystem/System.php";
 
 use PHPSystem\System;
@@ -77,6 +78,8 @@ function run_command() {
                 echo "Некорректный аргумент\nПример: php iceberg migration --up | php iceberg migration --down";
                 return;
             }
+
+            include __DIR__ . '/database/bootstrap.php';
 
             if (!isset($argv[3])) {
                 $migrationFiles = glob(__DIR__ . '/migrations/*.php');
