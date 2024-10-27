@@ -1,7 +1,6 @@
 <?php
 
 include __DIR__ . "/app/PHPSystem/System.php";
-require_once __DIR__ . '/vendor/autoload.php';
 
 use PHPSystem\System;
 
@@ -85,8 +84,8 @@ function run_command() {
                 foreach ($migrationFiles as $migrationFile) {
                     include $migrationFile;
 
-                    $className = str_replace('.php', '', basename($migrationFile));
-                    $className = explode("_", $className);
+                    $migrationName = str_replace('.php', '', basename($migrationFile));
+                    $className = explode("_", $migrationName);
                     $className = $className[count($className) - 1];
                     $className = 'Migrations\\' . $className;
 
@@ -94,8 +93,10 @@ function run_command() {
 
                     if ($argv[2] == '--up') {
                         $migrationInstance->up();
+                        echo "Миграция ".$migrationName." успешно выполнена\n";
                     } else if ($argv[2] == '--down') {
                         $migrationInstance->down();
+                        echo "Миграция ".$migrationName." успешно откачена\n";
                     }
                 }
                 return;
@@ -103,22 +104,24 @@ function run_command() {
 
             $migrationFile = __DIR__ . '/migrations/' . $argv[3];
             if (!file_exists($migrationFile)) {
-                echo "Указанный файл миграции не найден";
+                echo "Указанный файл миграции не найден\n";
                 return;
             }
 
             include $migrationFile;
 
-            $className = str_replace('.php', '', basename($migrationFile));
-            $className = explode("_", $className);
+            $migrationName = str_replace('.php', '', basename($migrationFile));
+            $className = explode("_", $migrationName);
             $className = $className[count($className) - 1];
             $className = 'Migrations\\' . $className;
 
             $migrationInstance = new $className();
             if ($argv[2] == '--up') {
                 $migrationInstance->up();
+                echo "Миграция ".$migrationName." успешно выполнена";
             } else if ($argv[2] == '--down') {
                 $migrationInstance->down();
+                echo "Миграция ".$migrationName." успешно откачена";
             }
 
             break;
