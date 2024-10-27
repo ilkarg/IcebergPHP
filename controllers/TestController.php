@@ -8,6 +8,7 @@ use PHPSession\Session;
 use PHPResponse\Response;
 use PHPToken\Token;
 use PHPAuth\Auth;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 use Models\Test;
 
@@ -76,6 +77,25 @@ class TestController {
 			])
 		]);
 	}
+
+    public function example() {
+//        $test = Test::create([
+//            'login' => 'example',
+//            'password' => 'password'
+//        ]);
+
+        Capsule::schema()->create('test', function($table) {
+            $table->increments('id');
+            $table->string('email')->unique();
+            $table->timestamps();
+        });
+
+//        error_log('page');
+
+        return Response::json([
+            'message' => 'OK'
+        ]);
+    }
 
 	public function registration() {
 		$test = Test::create([

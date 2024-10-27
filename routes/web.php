@@ -21,3 +21,5 @@ Route::get("/test_logout", [TestController::class, "logout"]);
 Route::get("/test_get_user", [TestController::class, "get_user"]);
 
 Route::post("/test_authorized", [TestController::class, "test_authorized"]);
+
+Route::get('/example', [TestController::class, "example"]);

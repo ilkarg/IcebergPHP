@@ -1,10 +1,11 @@
 <?php
 
 include __DIR__ . "/app/PHPSystem/System.php";
+require_once __DIR__ . '/vendor/autoload.php';
 
 use PHPSystem\System;
 
-$command_list = ["create-controller", "create-model", "start"];
+$command_list = ["create-controller", "create-model", "create-migration", "migration", "start"];
 
 function print_command_list() {
     global $command_list;
@@ -39,7 +40,7 @@ function run_command() {
     switch ($argv[1]) {
         case "create-controller":
             if (!isset($argv[2])) {
-                echo "Недостаточно аргументов\nПример: php helper create-controller ExampleController";
+                echo "Недостаточно аргументов\nПример: php iceberg create-controller ExampleController";
                 return;
             }
             if (!file_exists("controllers")) {
@@ -50,12 +51,76 @@ function run_command() {
             break;
         case "create-model":
             if (!isset($argv[2])) {
-                echo "Недостаточно аргументов\nПример: php helper create-model Example";
+                echo "Недостаточно аргументов\nПример: php iceberg create-model Example";
+                return;
             }
             if (!file_exists("models")) {
                 mkdir("models");
             }
             file_put_contents("models/".$argv[2].".php", "<?php\n\nnamespace Models;\n\nuse \\Illuminate\\Database\\Eloquent\\Model;\n\nclass ".$argv[2]." extends Model {\n\t\n}");
+            break;
+        case "create-migration":
+            if (!isset($argv[2])) {
+                echo "Недостаточно аргументов\nПример: php iceberg create-migration Example";
+                return;
+            }
+            if (!file_exists("migrations")) {
+                mkdir("migrations");
+            }
+            $migration_name = date("Y_m_d_His", time())."_".$argv[2];
+            file_put_contents("migrations/".$migration_name.".php", "<?php\n\nnamespace Migrations;\n\nuse Illuminate\Database\Capsule\Manager as Capsule;\n\nclass ".$argv[2]." {\n\tpublic function up() {\n\t\t\n\t}\n\n\tpublic function down() {\n\t\t\n\t}\n}");
+            break;
+        case "migration":
+            if (!isset($argv[2])) {
+                echo "Недостаточно аргументов\nПример: php iceberg migration --up | php iceberg migration --down";
+                return;
+            } else if ($argv[2] != '--up' && $argv[2] != '--down') {
+                echo "Некорректный аргумент\nПример: php iceberg migration --up | php iceberg migration --down";
+                return;
+            }
+
+            if (!isset($argv[3])) {
+                $migrationFiles = glob(__DIR__ . '/migrations/*.php');
+
+                foreach ($migrationFiles as $migrationFile) {
+                    include $migrationFile;
+
+                    $className = str_replace('.php', '', basename($migrationFile));
+                    $className = explode("_", $className);
+                    $className = $className[count($className) - 1];
+                    $className = 'Migrations\\' . $className;
+
+                    $migrationInstance = new $className();
+
+                    if ($argv[2] == '--up') {
+                        $migrationInstance->up();
+                    } else if ($argv[2] == '--down') {
+                        $migrationInstance->down();
+                    }
+                }
+                return;
+            }
+
+            $migrationFile = __DIR__ . '/migrations/' . $argv[3];
+            if (!file_exists($migrationFile)) {
+                echo "Указанный файл миграции не найден";
+                return;
+            }
+
+            include $migrationFile;
+
+            $className = str_replace('.php', '', basename($migrationFile));
+            $className = explode("_", $className);
+            $className = $className[count($className) - 1];
+            $className = 'Migrations\\' . $className;
+
+            $migrationInstance = new $className();
+            if ($argv[2] == '--up') {
+                $migrationInstance->up();
+            } else if ($argv[2] == '--down') {
+                $migrationInstance->down();
+            }
+
             break;
         case "start":
             if (isset($argv[2])) {
