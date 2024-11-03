@@ -37,6 +37,10 @@ function add_controller(string $controller_name) {
 
 function run_command() {
     global $argv;
+    if (!isset($argv[1])) {
+        print_command_list();
+        return;
+    }
     switch ($argv[1]) {
         case "create-controller":
             if (!isset($argv[2])) {
